@@ -5,7 +5,7 @@ import java.util.List;
 public class GetTransactionsResponse {
     private List<TransactionResponse> transactions;
 
-    public List<TransactionResponse> getTransactions() {
+    public List<TransactionResponse>    getTransactions() {
         return transactions;
     }
 

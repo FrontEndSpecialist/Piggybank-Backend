@@ -105,12 +105,12 @@ public class TransactionService {
         // Save the transaction.
         transactionRepository.save(transaction);
     }
-
+    
     public static int sortDescByDateTime(final Transaction t1, final Transaction t2) {
         return t2.getDateTime().compareTo(t1.getDateTime());
     }
 
-    private Transaction mapRequestToTransaction(final CreateTransactionRequest request) {
+    public Transaction mapRequestToTransaction(final CreateTransactionRequest request) {
         // Find the accounts that belong to given ID's
         final Account senderAccount = accountService.getAccount(request.getSenderAccountId()).orElseThrow(RuntimeException::new);
         final Account receiverAccount = accountService.getAccount(request.getReceiverAccountId()).orElseThrow(RuntimeException::new);

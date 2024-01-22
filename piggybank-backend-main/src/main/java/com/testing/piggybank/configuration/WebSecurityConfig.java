@@ -26,8 +26,8 @@ public class WebSecurityConfig {
             return configuration;
         }));
         http.csrf(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests(request -> request.anyRequest().permitAll());
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
+        http.authorizeHttpRequests(request -> request.anyRequest().permitAll());
         return http.build();
     }
 }

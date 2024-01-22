@@ -4,14 +4,15 @@ import com.testing.piggybank.model.Currency;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Service
 public class CurrencyConverterService {
     // One EUR is worth:
-    BigDecimal USD = new BigDecimal("1.10");
-    BigDecimal GBP = new BigDecimal("0.80");
-    BigDecimal EUR = new BigDecimal("1.00");
-    BigDecimal AUD = new BigDecimal("1.50");
+    BigDecimal Amount_USD = new BigDecimal("1.10");
+    BigDecimal Amount_GBP = new BigDecimal("0.80");
+    BigDecimal Amount_EUR = new BigDecimal("1.00");
+    BigDecimal Amount_AUD = new BigDecimal("1.50");
 
     /**
      * Convert foreign currency to EURO.
