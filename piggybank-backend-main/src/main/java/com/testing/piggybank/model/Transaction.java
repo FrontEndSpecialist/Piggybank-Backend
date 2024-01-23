@@ -101,4 +101,6 @@ public class Transaction {
     public void setReceiverAccount(Account receiverAccount) {
         this.receiverAccount = receiverAccount;
     }
+
+
 }

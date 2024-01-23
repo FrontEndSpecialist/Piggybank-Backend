@@ -33,6 +33,8 @@ public class AccountAPITests {
     @Autowired
     private AccountRepository accountRepository;
 
+
+//    integratie tests
     @BeforeEach
     void beforeEach(){
         transactionRepository.deleteAll();
@@ -62,6 +64,10 @@ public class AccountAPITests {
         Assertions.assertEquals(4, result.size());
     }
 
+
+
+//    API tests
+
     @Test
     public void TestGetAllTransactions(){
         HttpHeaders headers = new HttpHeaders();
@@ -74,6 +80,9 @@ public class AccountAPITests {
         Assertions.assertTrue(response.getStatusCode().is2xxSuccessful());
 
     }
+
+
+
 
     @Test
     public void test_createTransaction_responseOk(){
