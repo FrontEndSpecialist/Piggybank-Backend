@@ -62,6 +62,36 @@ public class AccountAPITests {
         Assertions.assertEquals(4, result.size());
     }
 
+    @Test
+    public void TestGetAllTransactions(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("X-User-Id", "1");
+
+        ResponseEntity<GetTransactionsResponse> response = restTemplate
+                .getForEntity("/api/v1/transactions/1", GetTransactionsResponse.class);
+
+        Assertions.assertTrue(response.getStatusCode().is2xxSuccessful());
+
+    }
+
+    @Test
+    public void test_createTransaction_responseOk(){
+        CreateTransactionRequest createTransactionRequest = new CreateTransactionRequest();
+        createTransactionRequest.setAmount(new BigDecimal(100));
+        createTransactionRequest.setReceiverAccountId(2L);
+        createTransactionRequest.setSenderAccountId(1L);
+        createTransactionRequest.setCurrency(Currency.EURO);
+        createTransactionRequest.setDescription("test transactie");
+
+        HttpEntity<CreateTransactionRequest> request = new HttpEntity<>(createTransactionRequest);
+
+        ResponseEntity<HttpStatus> response = restTemplate.postForEntity("/api/v1/transactions", request, HttpStatus.class);
+
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+
 
 
 
