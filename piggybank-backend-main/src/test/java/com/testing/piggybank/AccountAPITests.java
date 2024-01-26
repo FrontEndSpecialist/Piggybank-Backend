@@ -47,7 +47,7 @@ public class AccountAPITests {
 
         ResponseEntity<GetTransactionsResponse> response = restTemplate
                 .getForEntity("/api/v1/transactions/1", GetTransactionsResponse.class);
-        Assertions.assertTrue(response.getStatusCode().is2xxSuccessful());
+        Assertions.assertTrue(response.getStatusCode().is2xxSuccessful()    );
     }
 
     @Test
