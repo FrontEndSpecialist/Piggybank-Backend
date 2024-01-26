@@ -40,6 +40,17 @@ public class AccountAPITests {
     }
 
     @Test
+    void testGetAllTransactions(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("X-User-Id", "1");
+
+        ResponseEntity<GetTransactionsResponse> response = restTemplate
+                .getForEntity("/api/v1/transactions/1", GetTransactionsResponse.class);
+        Assertions.assertTrue(response.getStatusCode().is2xxSuccessful());
+    }
+
+    @Test
     void createTransaction_withValidTransaction_storesTransactionInDatabase(){
         CreateTransactionRequest request = new CreateTransactionRequest();
         request.setCurrency(Currency.EURO);
