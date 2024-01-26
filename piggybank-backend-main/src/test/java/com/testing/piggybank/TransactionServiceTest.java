@@ -37,24 +37,7 @@ public class TransactionServiceTest {
     @InjectMocks
     private TransactionService transactionService;
 
-    @Test
-    public void test(){
-    assertEquals("Dit is hetzelfde", "Dit is hetzelfde");
-    var object1 = new Object();
-    var object2 = new Object();
-    assertNotEquals(object1, object2);
 
-    String string1="testing";
-    assertNotNull(string1);
-    assertSame(string1, string1);
-
-    String string2 = null;
-    assertNull(string2);
-    int [] testArray1 = new int [] {1, 2, 3};
-    int [] testArray2 = new int [] {1, 2, 3};
-    assertArrayEquals(testArray1, testArray2);
-    assertTrue(1 < 2);
-}
 
     @Test
     public void testGetTransactions(){
@@ -72,7 +55,7 @@ public class TransactionServiceTest {
 
     @Test
     public void testMapRequestToTransaction() {
-        // Mock the behavior of accountService
+
         Account senderAccount = new Account();
         senderAccount.setId(1L);
         Account receiverAccount = new Account();
@@ -89,10 +72,10 @@ public class TransactionServiceTest {
         createTransactionRequest.setCurrency(Currency.EURO);
         createTransactionRequest.setDescription("Test Transaction");
 
-        // Invoke the method to be tested
+
         Transaction resultTransaction = transactionService.mapRequestToTransaction(createTransactionRequest);
 
-        // Verify the result
+
         assertNotNull(resultTransaction);
         assertEquals(createTransactionRequest.getAmount(), resultTransaction.getAmount());
         assertEquals(createTransactionRequest.getCurrency(), resultTransaction.getCurrency());
@@ -183,19 +166,7 @@ public class TransactionServiceTest {
 }
 
 
-//    @Test
-//    public void testCreateTransaction() {
-//        CreateTransactionRequest request = new CreateTransactionRequest();
-//        Transaction transaction = new Transaction();
-//
-//        when(converterService.toEuro(any(), any())).thenReturn(BigDecimal.TEN);
-//        when(accountService.getAccount(anyLong())).thenReturn(Optional.of(new Account()));
-//
-//        transactionService.createTransaction(request);
-//
-//        verify(accountService, times(2)).updateBalance(anyLong(), any(), any());
-//        verify(transactionRepository, times(1)).save(any());
-//    }
+
 
 
 
