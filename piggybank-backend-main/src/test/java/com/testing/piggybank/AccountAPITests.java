@@ -33,14 +33,11 @@ public class AccountAPITests {
     @Autowired
     private AccountRepository accountRepository;
 
-
-//    integratie tests
     @BeforeEach
     void beforeEach(){
         transactionRepository.deleteAll();
 
     }
-
 
     @Test
     void createTransaction_withValidTransaction_storesTransactionInDatabase(){
@@ -57,16 +54,11 @@ public class AccountAPITests {
         Assertions.assertEquals(1, result.size());
     }
 
-
     @Test
     public void test() {
         List<Account> result = accountRepository.findAll();
         Assertions.assertEquals(4, result.size());
     }
-
-
-
-//    API tests
 
     @Test
     public void TestGetAllTransactions(){
@@ -78,11 +70,7 @@ public class AccountAPITests {
                 .getForEntity("/api/v1/transactions/1", GetTransactionsResponse.class);
 
         Assertions.assertTrue(response.getStatusCode().is2xxSuccessful());
-
     }
-
-
-
 
     @Test
     public void test_createTransaction_responseOk(){
@@ -99,13 +87,6 @@ public class AccountAPITests {
 
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
-
-
-
-
-
-
-
 }
 
 

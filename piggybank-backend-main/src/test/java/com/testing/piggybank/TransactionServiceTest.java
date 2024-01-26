@@ -2,33 +2,19 @@ package com.testing.piggybank;
 import com.testing.piggybank.account.AccountService;
 import com.testing.piggybank.helper.CurrencyConverterService;
 import com.testing.piggybank.model.*;
-
-import java.time.LocalDateTime;
-import java.util.Collections;
-
-
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import com.testing.piggybank.transaction.CreateTransactionRequest;
 import com.testing.piggybank.transaction.TransactionRepository;
 import com.testing.piggybank.transaction.TransactionService;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,8 +54,21 @@ public class TransactionServiceTest {
     int [] testArray2 = new int [] {1, 2, 3};
     assertArrayEquals(testArray1, testArray2);
     assertTrue(1 < 2);
-
 }
+
+    @Test
+    public void testGetTransactions(){
+        int limit = 5;
+        long accountId = 1L;
+
+        List<Transaction> transactions = new ArrayList<>();
+        when(transactionRepository.findAll()).thenReturn(transactions);
+
+        List<Transaction> result = transactionService.getTransactions(limit, accountId);
+        verify(transactionRepository, times(1)).findAll();
+
+        assertEquals(transactions, result);
+    }
 
     @Test
     public void testMapRequestToTransaction() {
